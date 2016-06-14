@@ -39,7 +39,7 @@ public class ConditionTest {
 							 System.out.println("容器已滿，product線程加入池中...");
 							 create.await();
 						}
-						System.out.println("开始生产......");
+						System.out.println("开始生产......生产者开始工作");
 						list.add(new Object());
 						remove.signal();
 					} catch (InterruptedException e) {
