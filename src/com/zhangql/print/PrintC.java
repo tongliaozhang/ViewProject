@@ -29,8 +29,8 @@ public class PrintC implements Runnable{
 					
 					System.out.print("C");
 					index++;
-					   conditionA.signal();
-					   conditionC.await();
+					conditionA.signal();
+					conditionC.await();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
