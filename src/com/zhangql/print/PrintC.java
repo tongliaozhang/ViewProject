@@ -8,7 +8,7 @@ public class PrintC implements Runnable{
 
 	private Condition conditionC;
 	private Condition conditionA;
-	
+	private int count = 100;
 
 	public PrintC(Lock lock, Condition conditionC, Condition conditionA) {
 		super();
@@ -22,10 +22,13 @@ public class PrintC implements Runnable{
 	@Override
 	public void run() {
 		while(true){
+			int index = 0;
 			if(lock.tryLock()){
 				   try {
+					if(index>count) break;
+					
 					System.out.print("C");
-					System.out.println("");
+					index++;
 					   conditionA.signal();
 					   conditionC.await();
 				} catch (InterruptedException e) {

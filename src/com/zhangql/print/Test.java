@@ -5,7 +5,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.Lock;
 
 public class Test {
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		Lock lock = new ReentrantLock();
 		Condition conditionA = lock.newCondition();
 		Condition conditionB = lock.newCondition();
@@ -16,12 +16,7 @@ public class Test {
 		Thread t3 = new Thread(new PrintC(lock,conditionC,conditionA));
 		
 		t1.start();
-		try {
-			Thread.currentThread().sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Thread.currentThread().sleep(1000);
 		t2.start();
 		t3.start();
 	}
